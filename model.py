@@ -158,19 +158,19 @@ class Model(nn.Module):
         bs = self.batch_size
         
         if not self.include_anomaly:
-            xtr = SwapDataset(self.scaled_train_data.values[np.where(self.train_labels == 0)], self.swap_noise)
+            xtr = SwapDataset(self.scaled_train_data[np.where(self.train_labels == 0)], self.swap_noise)
         else:
-            xtr = SwapDataset(self.scaled_train_data.values, self.swap_noise)
+            xtr = SwapDataset(self.scaled_train_data, self.swap_noise)
 
-        xts = SwapDataset(self.scaled_test_data.values, self.swap_noise)
+        xts = SwapDataset(self.scaled_test_data, self.swap_noise)
         
 
         self.train_swap_dataloader = DataLoader(xtr, batch_size = bs)
         self.test_swap_dataloader = DataLoader(xts, batch_size = bs)
 
-        self.train_dataloader = DataLoader(torch.FloatTensor(self.scaled_train_data.values),
+        self.train_dataloader = DataLoader(torch.FloatTensor(self.scaled_train_data),
                          batch_size = bs)
-        self.test_dataloader = DataLoader(torch.FloatTensor(self.scaled_test_data.values),
+        self.test_dataloader = DataLoader(torch.FloatTensor(self.scaled_test_data),
                          batch_size = bs)
     
     def train(self, epochs):
