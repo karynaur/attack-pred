@@ -34,8 +34,8 @@ def NSL_KDD(base_path):
 
 # UNSW
 def UNSW(base_path):
-    train = pd.read_csv(base_path + "/UNSW_NB15_training-set.csv")
-    test = pd.read_csv(base_path + "/UNSW_NB15_testing-set.csv")
+    train = pd.read_csv(base_path + "/UNSW_NB15_clean/UNSW_NB15_training-set.csv")
+    test = pd.read_csv(base_path + "/UNSW_NB15_clean/UNSW_NB15_testing-set.csv")
 
     train_labels = np.array([0 if i==1 else 1 for i in train['label']])
     test_labels = np.array([0 if i==1 else 1 for i in test['label']])
