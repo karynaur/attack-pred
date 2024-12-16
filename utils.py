@@ -25,7 +25,7 @@ def NSL_KDD(base_path):
     test = pd.read_csv(base_path + "/NSLKDD/test.csv")
 
     train_labels = np.array([0 if i=='Normal' else 1 for i in train['label']])
-    test_labels = np.array([0 if i=='Normal' else 1 for i in test['label']])
+    test_labels = np.array([0 if i==1 else 1 for i in test['label']])
     train["label"] = train_labels
     scaled_train_data = train.drop(["label"],axis=1)
     scaled_test_data = test.drop(["label"],axis=1)
