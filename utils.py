@@ -20,9 +20,9 @@ def get_test_accuracy_of(model, test_data, test_labels):
     df = pd.DataFrame.from_dict(metrics)
     return df
 
-def NSL_KDD():
-    train = pd.read_csv("/mnt/g/My Drive/Attack Prediction/Data/NSLKDD/train.csv")
-    test = pd.read_csv("/mnt/g/My Drive/Attack Prediction/Data/NSLKDD/test.csv")
+def NSL_KDD(base_path):
+    train = pd.read_csv(base_path + "/NSLKDD/train.csv")
+    test = pd.read_csv(base_path + "/NSLKDD/test.csv")
 
     train_labels = np.array([0 if i=='Normal' else 1 for i in train['label']])
     test_labels = np.array([0 if i=='Normal' else 1 for i in test['label']])
@@ -33,9 +33,9 @@ def NSL_KDD():
     return scaled_train_data, train_labels, scaled_test_data, test_labels
 
 # UNSW
-def UNSW():
-    train = pd.read_csv("/mnt/g/My Drive/Attack Prediction/Data/UNSW_NB15_clean/UNSW_NB15_training-set.csv")
-    test = pd.read_csv("/mnt/g/My Drive/Attack Prediction/Data/UNSW_NB15_clean/UNSW_NB15_testing-set.csv")
+def UNSW(base_path):
+    train = pd.read_csv(base_path + "/UNSW_NB15_training-set.csv")
+    test = pd.read_csv(base_path + "/UNSW_NB15_testing-set.csv")
 
     train_labels = np.array([0 if i==1 else 1 for i in train['label']])
     test_labels = np.array([0 if i==1 else 1 for i in test['label']])
@@ -45,9 +45,9 @@ def UNSW():
 
     return scaled_train_data, train_labels, scaled_test_data, test_labels
 
-def AWID():
-    train = pd.read_csv("/mnt/g/My Drive/Attack Prediction/Data/AWID2/train.csv")
-    test = pd.read_csv("/mnt/g/My Drive/Attack Prediction/Data/AWID2/test.csv")
+def AWID(base_path):
+    train = pd.read_csv(base_path + "/AWID2/train.csv")
+    test = pd.read_csv(base_path + "/AWID2/test.csv")
 
     train_labels = np.array([0 if i=='normal' else 1 for i in train['label']])
     test_labels = np.array([0 if i=='normal' else 1 for i in test['label']])
